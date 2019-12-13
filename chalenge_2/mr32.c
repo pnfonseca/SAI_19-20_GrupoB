@@ -150,7 +150,7 @@ const signed int KI_num=1, KI_den=1;   // Integral constant
 
 // ***************************************************************************
 #define DIM_BAT_ARRAY   128          // Dimension of the battery voltage array
-#define MEDIAN_SIZE     5            // Median buffer size for obstacle sensor filtering              
+#define MEDIAN_SIZE     1            // Median buffer size for obstacle sensor filtering              
 #define AVERAGE_SIZE    1            // Average buffer size for obstacle sensor filtering              
 
 // ****************************************************************************

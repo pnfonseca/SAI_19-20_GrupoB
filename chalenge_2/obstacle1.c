@@ -1,8 +1,8 @@
 #include "mr32.h"
 
-int disfrontdir;
-int disrightdir;
-int disleftdir;
+int disFrontdir;
+int disRightdir;
+int disLeftdir;
 
 int
 main (void)
@@ -22,27 +22,66 @@ main (void)
     
     //
     
-    printf("disleftdir = %d   ",disleftdir);
-    printf("disfrontdir= %d   ",disfrontdir);
-    printf("disrightdir= %d\n ",disrightdir);
+    printf("disleftdir = %d   ",disLeftdir);
+    printf("disfrontdir= %d   ",disFrontdir);
+    printf("disrightdir= %d\n ",disRightdir);
     
-    disfrontdir=obstacleSensor(OBST_SENSOR_FRONT);
-    disrightdir=obstacleSensor(OBST_SENSOR_RIGHT);
-    disleftdir=obstacleSensor(OBST_SENSOR_LEFT);
 
-    if(disfrontdir< 30 && (disleftdir < disrightdir)) setVel2(0,40);
+    disFrontdir=obstacleSensor(OBST_SENSOR_FRONT);
+    disRightdir=obstacleSensor(OBST_SENSOR_RIGHT);
+    disLeftdir=obstacleSensor(OBST_SENSOR_LEFT);
 
-    else if(disfrontdir< 30 && (disleftdir < disrightdir)) setVel2(40,0);
+   /*
+    while (disFrontdir< 40 && (disLeftdir <40)) 
+    {
+      readAnalogSensors();
+      disFrontdir=obstacleSensor(OBST_SENSOR_FRONT);
+      disRightdir=obstacleSensor(OBST_SENSOR_RIGHT);
+      disLeftdir=obstacleSensor(OBST_SENSOR_LEFT);
+      setVel2(20,-30);
+      delay(2000);
+    }
 
-    //else if(disleftdir< 30) setVel2(40,0);
+    while (disFrontdir< 40 && (disRightdir < 40)) 
+    {
+      readAnalogSensors();
+      disFrontdir=obstacleSensor(OBST_SENSOR_FRONT);
+      disRightdir=obstacleSensor(OBST_SENSOR_RIGHT);
+      disLeftdir=obstacleSensor(OBST_SENSOR_LEFT);
+      setVel2(-30,20);
+      delay(2000);
+    }
+*/
+    if(disFrontdir< 30 && (disLeftdir <= disRightdir)) setVel2(40,0);
 
+    else if(disFrontdir< 30 && (disLeftdir > disRightdir)) setVel2(0,40);
+
+    else if(disLeftdir< 30) setVel2(40,0);
     
-    //else if(disrightdir< 30) setVel2(0,40);
+    else if(disRightdir< 30) setVel2(0,40);
     
     else setVel2(40,40);
 
-
-
+/*
+    if(disLeftdir <= disRightdir) 
+    {
+    setVel2(40,0);
+    delay(5000);
+    }
+    else if(disLeftdir > disRightdir) 
+    {
+    setVel2(0,40);
+    delay(5000);
+    }
+   // else if(disLeftdir< 30) setVel2(40,0);
+    
+   // else if(disRightdir< 30) setVel2(0,40);
+    
+    else 
+    {
+    setVel2(40,40);
+    delay(5000);
+    } */
 
 
 
