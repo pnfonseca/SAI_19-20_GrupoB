@@ -48,7 +48,7 @@ while (1)
 	unsigned int Center = (a & 0x04)>>2;
 	unsigned int Left1  = (a & 0x08)>>3;
 	unsigned int Left2  = (a & 0x16)>>4;
-     
+     disableGroundSens();
 	//when robot sence the start line
 	if(a==0x1F)
 		{
@@ -106,10 +106,9 @@ while (1)
 		avg =0;
 		for (i=0;i<50;i++)                            //get average cause of oscilating the value of sensor
 			avg += obstacleSensor(OBST_SENSOR_FRONT);
-		
 		Distance = (int)(avg/50);
-		printf("d =%d C1=%d\n",Distance,Cycle);
 		}
+		disableObstSens();
 	 
 	printf("d =%d C=%d\n",Distance,Cycle);
    
