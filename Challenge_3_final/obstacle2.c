@@ -32,6 +32,9 @@ main (void)
     disFrontdir=obstacleSensor(OBST_SENSOR_FRONT);
     disRightdir=obstacleSensor(OBST_SENSOR_RIGHT);
     disLeftdir=obstacleSensor(OBST_SENSOR_LEFT);
+
+    //Disable obstacle sensors
+    disableObstSens();
   
 	//Verifying if distance between robot and obstacle (detected by front sensor) is less than minimum acceptable distance and if value provided by left sensor is less or equal to value provided by right sensor.
     if(disFrontdir < setpoint && (disLeftdir <= disRightdir)) 
